@@ -1,6 +1,6 @@
 # https://www.lintcode.com/problem/659/
 
-class Solution:
+class Solution1:
     """
     @param: strs: a list of strings
     @return: encodes a list of strings to a single string.
@@ -39,9 +39,32 @@ class Solution:
         return out
 
 
+# another solution
+class Solution:
+    def encode(self, strs):
+        out = ''
+        for s in strs:
+            out += str(len(s)) + '#' + s
+        return out
+
+    def decode(self, str):
+        out = []
+        start = 0
+        while start < len(str):
+            j = start
+            while str[j] != '#':
+                j += 1
+            length = int(str[start: j])
+            word = str[j + 1: j + 1 + length]
+            out.append(word)
+            start = j + 1 + length
+        return out
+
+
 if __name__ == '__main__':
     solution = Solution()
-    test_case = ["lint", "code", "love", "you"]
+    test_case = ["lint", "code"]
+    # test_case = ["lint", "code", "love", "you"]
     # test_case = ["we", "say", ":", "yes"]
     # assert solution.decode(solution.encode(test_case)) == test_case
     print(solution.decode(solution.encode(test_case)))
