@@ -26,7 +26,7 @@ if __name__ == '__main__':
     solution = Solution()
     print(solution.longestConsecutive(nums))
 
-# [1, 2, 3, 4]
+# [1, 2, 5, 6]
 # 1 - начало последовательности, значит будет еще + 3 итерации
 # 2 - не начало
 # 3 - не начало
