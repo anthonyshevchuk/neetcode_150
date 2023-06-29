@@ -17,20 +17,10 @@ class Solution:
         h_to_go = []
         fleet_count = 0
 
-        for i in range(len(position)):
-            ith_m_to_go = target - position[i]
-            ith_h_to_go = ith_m_to_go / speed[i]
+        for i in range(len(position) - 1, -1, -1):
+            ith_h_to_go = (target - position[i] )/ speed[i]
 
-            # if it's the first car:
-            if not h_to_go:
-                fleet_count += 1
-                h_to_go.append(ith_h_to_go)
-
-            # if they can potentially meet before destination (if equal - they arrive at dest. at the same time)
-            elif ith_h_to_go >= h_to_go[i - 1]:
-                h_to_go.append(ith_h_to_go)
-
-            else:
+            if not h_to_go or ith_h_to_go > h_to_go[-1]:
                 fleet_count += 1
                 h_to_go.append(ith_h_to_go)
 
@@ -42,5 +32,6 @@ if __name__ == '__main__':
     # print(s.carFleet(12, [10, 8, 0, 5, 3], [2, 4, 1, 1, 3]))  # 3
     # print(s.carFleet(100, [0, 2, 4], [4, 2, 1]))  # 1
     print(s.carFleet(10, [0, 4, 2], [2, 1, 3]))  # 1
+
 
 
