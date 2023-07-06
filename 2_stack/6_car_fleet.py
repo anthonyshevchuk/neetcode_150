@@ -18,7 +18,7 @@ class Solution:
         fleet_count = 0
 
         for i in range(len(position) - 1, -1, -1):
-            ith_h_to_go = (target - position[i] )/ speed[i]
+            ith_h_to_go = (target - position[i]) / speed[i]
 
             if not h_to_go or ith_h_to_go > h_to_go[-1]:
                 fleet_count += 1

@@ -8,7 +8,7 @@ class Solution:
         stack = []  # (idx, t)
         for idx, t in enumerate(temperatures):
             while stack and t > stack[-1][1]:
-                prev_idx, prev_t = stack.pop()
+                prev_idx, _ = stack.pop()
                 diff = idx - prev_idx
                 res[prev_idx] = diff
             stack.append((idx, t))
